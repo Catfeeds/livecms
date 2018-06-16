@@ -5,9 +5,9 @@
 
 #--------------------------------------------  
 前台访问  
-	http://localhost/livecms  
+	localhost/livecms  
 后台访问  
-	http://localhost/livecms/index.php/Admin/Login/index  
+	localhost/livecms/index.php/Admin/Login/index  
 超级管理员  
 	账号 admin  
 	密码 123456  
