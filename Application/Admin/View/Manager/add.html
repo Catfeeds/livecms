@@ -1,0 +1,70 @@
+<extend name="Common:common" />
+<block name="cssjs"></block>
+<block name="body">
+<body>
+    <!--面包屑导航 开始-->
+    <div class="crumb_warp">
+        <a href="__MODULE__/Index/info">首页</a> &raquo; <a href="__URL__/index">管理员管理</a> &raquo; 添加&nbsp;&nbsp;<a href="__URL__/add"><i class="fa fa-refresh"></i></a>
+    </div>
+    <!--面包屑导航 结束-->
+
+    <div class="result_wrap">
+        <form method="post" id="dataSet" onsubmit="return present();">
+            <table class="add_tab">
+                <tbody>
+                <tr>
+                    <th width="120">名称：</th>
+                    <td>
+                        <input type="text" name="admin_name" required><span>必填</span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>密码：</th>
+                    <td>
+                        <input type="password" name="admin_pass" id="admin_pass" required><span>必填, 新密码6-20位</span> 
+                    </td>
+                </tr>
+                <tr>
+                    <th>确认密码：</th>
+                    <td>
+                        <input type="password" name="admin_repass" id="admin_repass" required><span>必填, 再次输入密码</span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>角色：</th>
+                    <td>
+                        <select name="admin_role_id" id="">
+                        <foreach name="role_list" item="v">
+                            <option value="{$v['role_id']}">{$v['role_name']}</option>
+                        </foreach> 
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th></th>
+                    <td>
+                        <input type="submit" value="提交" class="btn-blue">
+                        <input type="button" class="back btn-blue" onclick="history.go(-1)" value="返回">
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+</body>
+<script type="text/javascript">
+    //数据提交
+    function present() {
+        //检查数据
+        var admin_pass = $('#admin_pass').val();
+        var admin_repass = $('#admin_repass').val();
+        if(admin_pass != admin_repass) {
+            dialog.error('两次密码输入不一致!');
+            return false;
+        }
+        dialog.presentForm('__URL__/addData', '__URL__/index');
+
+        return false;
+    }
+</script>
+</block>

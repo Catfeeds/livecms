@@ -1,0 +1,86 @@
+<extend name="Common:common" />
+<block name="cssjs"></block>
+<block name="body">
+<body>
+    <!--面包屑导航 开始-->
+    <div class="crumb_warp">
+        <a href="__MODULE__/Index/info">首页</a> &raquo; <a href="__URL__/index">角色管理</a>
+    </div>
+    <!--面包屑导航 结束-->
+
+    <!--搜索结果页面 列表 开始-->
+    <form action="#" method="post">
+        <div class="result_wrap">
+            <!--快捷导航 开始-->
+            <div class="result_content">
+                <div class="short_wrap">
+                    <a href="__URL__/add" class="linkblue">添加角色</a>
+                    <a href="javascript:;" onclick="dels();" class="linkblue">批量删除</a>
+                    <a href="__URL__/index" class="linkblue">刷新</a>
+                </div>
+            </div>
+            <!--快捷导航 结束-->
+        </div>
+
+        <div class="result_wrap">
+            <div class="result_content">
+                <table class="list_tab">
+                    <tr>
+                        <th width="4%"><input type="checkbox" name=""></th>
+                        <th width="4%"><strong>ID</strong></th>
+                        <th width="80%"><strong>角色名称</strong></th>
+                        <th><strong>操作</strong></th>
+                    </tr>
+                    <foreach name="list" item="v">
+                        <tr>
+                            <td><input type="checkbox" name="id[]" value="{$v['role_id']}"></td>
+                            <td>{$v['role_id']}</td>
+                            <td>
+                               {$v['role_name']}
+                            </td>
+                            <td>
+                                <a href="__URL__/info/role_id/{$v['role_id']}">分配权限</a> <a>|</a>
+                                <a href="__URL__/edit/role_id/{$v['role_id']}">编辑</a> <a>|</a>
+                                <a href="javascript:;" onclick="del({$v['role_id']});">删除</a>
+                            </td>
+                        </tr>
+                    </foreach>
+                    
+                </table>
+
+                <!-- 分页开始 -->
+                <div class="page_list page">
+                    {$page} 
+                </div>
+                <br><a style="text-decoration:none;">共{$count}条记录</a>
+                <!-- 分页结束 -->
+
+            </div>
+        </div>
+    </form>
+    <!--搜索结果页面 列表 结束-->
+</body>
+<script>
+    //删除
+    function del(id) {
+        dialog.confirm('确定删除吗?', '__URL__/del', '__URL__/index', id);
+    }
+
+    //批量删除
+    function dels() {
+        var id = '';
+        var ids = $('.list_tab').find('tr').find('td').find('input:checked');
+        var num = ids.length;
+        for(var i = 0; i < num; i++) {
+            id += ids[i].value + ',';
+        }
+        id = id.substring(0, id.length-1);
+        if(id == '') {
+            dialog.error('请至少选择一项!');
+        } else {
+            dialog.confirm('确定删除吗?', '__URL__/dels', '__URL__/index', id);
+        }
+    }
+    
+</script>
+</block>

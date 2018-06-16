@@ -1,0 +1,36 @@
+<extend name="HomeCommon:common" />
+<block name="keywords"><meta name="keywords" content="11" /></block>
+<block name="description"><meta name="description" content="22" /></block>
+<block name="title"><title>客户案例 {$config['config_web_name']}</title></block>
+<block name="css">
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/aboutus.css">
+</block>
+<block name="js"></block>
+<block name="body">
+	<!-- 客户案例 start -->
+	<div class="bigimg w">
+		<div class="bigimgbox">
+			<img src="__PUBLIC__/images/bigimg1.jpg">
+		</div>
+		<h2>客户案例</h2>
+	</div>
+
+	<!-- 列表 -->
+	<div class="examples w">
+		<div class="examplesbox">
+			<div class="case-list">
+				<foreach name="case" item="v">
+					<div class="col3">
+						<img src="__ROOT__/{$v['case_img']}">
+						<p>{$v['case_title']}</p>
+					</div>
+				</foreach>			
+			</div>
+		</div>
+	</div>
+
+	<!-- 客户案例 end -->
+
+	<div class="clear"></div>
+</block>
+	

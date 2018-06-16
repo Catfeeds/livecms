@@ -1,0 +1,51 @@
+<extend name="Common:common" />
+<block name="cssjs"></block>
+<block name="body">
+<body>
+    <!--面包屑导航 开始-->
+    <div class="crumb_warp">
+        <a href="__MODULE__/Index/info">首页</a> &raquo; <a href="__URL__/index">管理员管理</a> &raquo; 编辑
+    </div>
+    <!--面包屑导航 结束-->
+
+    <div class="result_wrap">
+        <form method="post" id="dataSet" onsubmit="return present();">
+            <input type="hidden" name="admin_id" value="{$info['admin_id']}">
+            <table class="add_tab">
+                <tbody>
+                <tr>
+                    <th width="120">名称：</th>
+                    <td>
+                        <input type="text" name="admin_name" value="{$info['admin_name']}" required><span>必填</span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>角色：</th>
+                    <td>
+                        <select name="admin_role_id" id="">
+                        <foreach name="role_list" item="v">
+                            <option value="{$v['role_id']}" <?php if($info['admin_role_id'] == $v['role_id']){echo 'selected';} ?>>{$v['role_name']}</option>
+                        </foreach> 
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th></th>
+                    <td>
+                        <input type="submit" value="提交" class="btn-blue">
+                        <input type="button" class="back btn-blue" onclick="history.go(-1)" value="返回">
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+</body>
+<script type="text/javascript">
+    //数据提交
+    function present() {
+        dialog.presentForm('__URL__/editData', '__URL__/index');
+        return false;
+    }
+</script>
+</block>

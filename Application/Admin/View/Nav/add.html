@@ -1,0 +1,63 @@
+<extend name="Common:common" />
+<block name="cssjs"></block>
+<block name="body">
+<body>
+    <!--面包屑导航 开始-->
+    <div class="crumb_warp">
+        <a href="__MODULE__/Index/info">首页</a> &raquo; <a href="__URL__/index">导航管理</a> &raquo; 添加&nbsp;&nbsp;<a href="__URL__/add"><i class="fa fa-refresh"></i></a>
+    </div>
+    <!--面包屑导航 结束-->
+
+    <div class="result_wrap">
+        <form method="post" id="dataSet" onsubmit="return present();">
+            <table class="add_tab">
+                <tbody>
+                <tr>
+                    <th width="120">导航等级：</th>
+                    <td>
+                        <select name="nav_pid" id="nav_pid">
+                            <option value="0" selected="selected">一级导航</option>
+                            <foreach name="list" item="v">
+                                <option value="{$v['nav_id']}">上级 : {$v['nav_name']}</option>
+                            </foreach>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th>导航名称：</th>
+                    <td>
+                        <input type="text" name="nav_name" id="nav_name" required><span>必填</span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>链接：</th>
+                    <td>
+                        <input type="text" name="nav_link" required><span>必填</span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>排序：</th>
+                    <td>
+                        <input type="text" name="nav_sort" value="10"><span>数值越小, 排序越靠前, 默认值为10</span>
+                    </td>
+                </tr>
+                <tr>
+                    <th></th>
+                    <td>
+                        <input type="submit" value="提交" class="btn-blue">
+                        <input type="button" class="back btn-blue" onclick="history.go(-1)" value="返回">
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+</body>
+<script type="text/javascript">
+    //数据提交
+    function present() {
+        dialog.presentForm("__URL__/addData", "__URL__/index");
+        return false;
+    }
+</script>
+</block>

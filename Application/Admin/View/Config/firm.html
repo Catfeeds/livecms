@@ -1,0 +1,77 @@
+<extend name="Common:common" />
+<block name="cssjs"></block>
+<block name="body">
+<body>
+    <!--面包屑导航 开始-->
+    <div class="crumb_warp">
+        <a href="__MODULE__/Index/info">首页</a> &raquo; <a href="__URL__/index">网站配置</a>
+    </div>
+    <!--面包屑导航 结束-->
+
+    <div class="result_wrap">
+            <!--快捷导航 开始-->
+            <div class="result_content">
+                <div class="short_wrap">
+                    <a href="__URL__/index" class="linkblue">网站信息</a>
+                    <a href="__URL__/seo" class="linkblue">SEO设置</a>
+                    <a href="__URL__/firm" class="linkblue linkdarkblue">公司信息</a>
+                    <a href="__URL__/service" class="linkblue">客服设置</a>
+                </div>
+            </div>
+            <!--快捷导航 结束-->
+        </div>
+
+    <div class="result_wrap">
+        <form method="post" id="dataSet" onsubmit="return present();">
+            <table class="add_tab">
+                <tbody>
+                <tr>
+                    <th width="120">公司名称：</th>
+                    <td>
+                        <input type="text" name="config_firm_name" class="lg" value="{$info['config_firm_name']}">
+                    </td>
+                </tr>
+                <tr>
+                    <th width="120">地址：</th>
+                    <td>
+                        <input type="text" name="config_firm_location" class="lg" value="{$info['config_firm_location']}">
+                    </td>
+                </tr>
+                <tr>
+                    <th width="120">电话：</th>
+                    <td>
+                        <input type="text" name="config_firm_phone" class="lg" value="{$info['config_firm_phone']}">
+                    </td>
+                </tr>
+                <tr>
+                    <th width="120">传真：</th>
+                    <td>
+                        <input type="text" name="config_firm_fax" class="lg" value="{$info['config_firm_fax']}">
+                    </td>
+                </tr>
+                <tr>
+                    <th width="120">邮箱：</th>
+                    <td>
+                        <input type="text" name="config_firm_mail" class="lg" value="{$info['config_firm_mail']}">
+                    </td>
+                </tr>
+                <tr>
+                    <th></th>
+                    <td>
+                        <input type="submit" value="提交" class="btn-blue">
+                        <input type="button" class="back btn-blue" onclick="history.go(-1)" value="返回">
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+</body>
+<script type="text/javascript">
+    //数据提交
+    function present() {
+        dialog.presentForm("__URL__/editData", "__URL__/index");
+        return false;
+    }
+</script>
+</block>

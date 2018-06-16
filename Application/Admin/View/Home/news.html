@@ -1,0 +1,40 @@
+<extend name="HomeCommon:common" />
+<block name="title"><title>新闻中心 {$config['config_web_name']}</title></block>
+<block name="css">
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/aboutus.css">
+</block>
+<block name="js"></block>
+<block name="body">
+	<!-- 新闻中心 start -->
+	<div class="bigimg w">
+		<div class="bigimgbox">
+			<img src="__PUBLIC__/images/bigimg1.jpg">
+		</div>
+		<h2>新闻中心</h2>
+	</div>
+
+	<!-- 列表 start -->
+	<div class="news w">
+		<div class="newsbox">
+			<foreach name="list" item="v">
+				<div class="newsitem">
+					<h2 class="fl"><a href="__URL__/detail/id/{$v['art_id']}" class="newstitle">{$v['art_title']}</a></h2>
+					<p class="time fr">
+						<span class="author">{$v['art_editor']}</span>
+						<span>|</span>
+						<span class="timedetail"><?php echo date('Y-m-d', $v['art_time']); ?></span>
+					</p>
+					<div class="clear"></div>
+					<p class="newssubtitle">{$v['art_desc']}</p>
+				</div>
+			</foreach>
+			<div class="page">
+				{$page}
+			</div>
+		</div>
+	</div>
+	<!-- 列表 end -->
+
+	<div class="clear mb100"></div>
+
+</block>

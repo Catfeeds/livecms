@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="__PUBLIC__/css/ch-ui.admin.css">
+	<link rel="stylesheet" href="__PUBLIC__/font/css/font-awesome.min.css">
+	<script type="text/javascript" src="__PUBLIC__/js/jquery.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/js/layer/layer.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/js/dialog.js"></script>
+</head>
+<body style="background:#393D49;">
+	<div class="login_box">
+		<h1>Live</h1>
+		<h2 style="color:#fff;">管理平台</h2>
+		<div class="form">
+			<form action="#" method="post" action="" id="dataSet" onsubmit="return present();">
+				<ul>
+					<li>
+					<input type="text" name="admin_name" class="text"/>
+						<span><i class="fa fa-user"></i></span>
+					</li>
+					<li>
+						<input type="password" name="admin_pass" class="text"/>
+						<span><i class="fa fa-lock"></i></span>
+					</li>
+					<li>
+						<input type="text" class="code" name="verifyCode"/>
+						<span><i class="fa fa-check-square-o"></i></span>
+						<img src="__URL__/verify" alt="" onclick="change()" id="verify">
+					</li>
+					<li>
+						<input type="submit" value="立即登陆" />
+					</li>
+				</ul>
+			</form>
+			<p><a href="http://www.live.com" style="color:#fff;">首页</a><span style="color:#fff;"> &copy; 2016 Powered by </span><a href="http://www.live.com" target="_blank" style="color:#fff;">http://www.ping1.cc</a></p>
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+
+//验证码刷新
+function change() {
+	$('#verify').attr('src', "__URL__/verify?r=" + Math.random());
+}
+
+//数据提交
+function present() {
+	//数据检验
+	var admin_name 	= $('input[name="admin_name"]').val();
+	var admin_pass 	= $('input[name="admin_pass"]').val();
+	var verify 		= $('input[name="verifyCode"]').val();
+	if(!admin_name || !admin_pass || !verify) {
+		dialog.error('数据填写不完整!');
+		change();
+		return false;
+	}
+
+	$.ajax({
+ 			type 		: 'POST',
+ 			url         : "__URL__/check",
+ 			data        : $('#dataSet').serialize(),
+ 			success     : function(info) {
+ 				if(info.code == '201') {
+ 					change();
+ 					dialog.error(info.msg);
+ 				} else {
+ 					dialog.success(info.msg, "__MODULE__/Index/index");
+ 				}
+ 			}
+ 		});
+
+	return false;
+}
+
+</script>
+</html>

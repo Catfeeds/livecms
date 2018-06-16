@@ -1,0 +1,107 @@
+<extend name="Common:common" />
+<block name="cssjs"></block>
+<block name="body">
+<body>
+    <!--面包屑导航 开始-->
+    <div class="crumb_warp">
+        <a href="__MODULE__/Index/info">首页</a> &raquo; <a href="__URL__/index">导航管理</a>
+    </div>
+    <!--面包屑导航 结束-->
+
+    <!--搜索结果页面 列表 开始-->
+    <form action="#" method="post">
+        <div class="result_wrap">
+            <!--快捷导航 开始-->
+            <div class="result_content">
+                <div class="short_wrap">
+                    <a href="__URL__/add" class="linkblue">添加导航</a>
+                    <a href="__URL__/index" class="linkblue">刷新</a>
+                </div>
+            </div>
+            <!--快捷导航 结束-->
+        </div>
+
+        <div class="result_wrap">
+            <div class="result_content">
+                <table class="list_tab">
+                    <tr>
+                        <th width="4%"><strong>ID</strong></th>
+                        <th width="4%"><strong>排序</strong></th>
+                        <th width="40%"><strong>导航名称</strong></th>
+                        <th width="40%"><strong>链接</strong></th>
+                        <th><strong>操作</strong></th>
+                    </tr>
+                    <foreach name="listA" item="v">
+                        <if condition="$v['nav_pid'] eq 0">
+                            <tr>
+                                <td>{$v['nav_id']}</td>
+                                <td>
+                                    <input type="text" name="nav_sort" value="{$v['nav_sort']}" onchange="sort(this, {$v['nav_id']})">
+                                </td>
+                                <td>
+                                   {$v['nav_name']}
+                                </td>
+                                <td>
+                                   {$v['nav_link']}
+                                </td>
+                                <td>
+                                    <a href="__URL__/edit/nav_id/{$v['nav_id']}">编辑</a> <a>|</a>
+                                    <a href="javascript:;" onclick="del({$v['nav_id']});">删除</a>
+                                </td>
+                            </tr>
+                        </if>
+                        <foreach name="listB" item="vv">
+                            <if condition="$vv['nav_pid'] eq $v['nav_id']">
+                            <tr>
+                                <td>{$vv['nav_id']}</td>
+                                <td>
+                                    <input type="text" name="nav_sort" value="{$vv['nav_sort']}" onchange="sort(this, {$vv['nav_id']})">
+                                </td>
+                                <td>
+                                   --------{$vv['nav_name']}
+                                </td>
+                                <td>
+                                   {$vv['nav_link']}
+                                </td>
+                                <td>
+                                    <a href="__URL__/edit/nav_id/{$vv['nav_id']}">编辑</a> <a>|</a>
+                                    <a href="javascript:;" onclick="del({$vv['nav_id']});">删除</a>
+                                </td>
+                            </tr>
+                            </if>
+                        </foreach>
+                    </foreach>
+                    
+                </table>
+
+            </div>
+        </div>
+    </form>
+    <!--搜索结果页面 列表 结束-->
+
+</body>
+<script>
+    //删除
+    function del(id) {
+        dialog.confirm('确定删除吗?', '__URL__/del', '__URL__/index', id);
+    }
+
+    //更改排序
+    function sort(obj, nav_id) {
+        var nav_sort = $(obj).val();
+        $.ajax({
+            type        : 'POST',
+            url         : '__URL__/sort',
+            data        : {nav_sort : nav_sort, nav_id : nav_id},
+            success     : function(info) {
+                if(info.code == '201') {
+                    dialog.error(info.msg);
+                } else {
+                    dialog.success(info.msg, '__URL__/index');
+                }
+            }
+        });
+    }
+
+</script>
+</block>

@@ -1,0 +1,71 @@
+<extend name="HomeCommon:common" />
+<block name="title"><title>在线留言 {$config['config_web_name']}</title></block>
+<block name="css">
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/aboutus.css">
+</block>
+<block name="js"></block>
+<block name="body">
+	<!-- 关于我们 start -->
+	<div class="bigimg w">
+		<div class="bigimgbox">
+			<img src="__PUBLIC__/images/bigimg2.jpg">
+		</div>
+		<h2>在线留言</h2>
+	</div>
+
+	<div class="contact w">
+		<div class="contactbox">
+			<div class="contactleft fl">
+				<ul>
+					<li><a href="us.html">公司简介</a></li>
+					<li><a href="contact.html">联系我们</a></li>
+					<li><a href="job.html">人才招聘</a></li>
+					<li><a href="msg.html" class="leftactive">在线留言</a></li>
+				</ul>
+			</div>
+			<div class="contactright fr">
+				<div class="contactrightbox">
+					<div class="contacttitle">
+						<h2>在线留言</h2>
+						<form class="clientinfo" onsubmit="return present();" method="post" id="dataSet">
+							<p>姓名</p>
+							<input type="text" name="msg_name">
+							<p>手机</p>
+							<input type="text" name="msg_phone">
+							<p>QQ</p>
+							<input type="text" name="msg_qq">
+							<p>需求</p>
+							<textarea name="msg_content"></textarea>
+							<button type="submit">提交</button>
+						</form>
+						
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+	<!-- 关于我们 end -->
+
+	<script type="text/javascript">
+		function present() {
+			$.ajax({
+	 			type 		: 'POST',
+	 			url         : '__APP__/Home/Msg/addData',
+	 			data        : $('#dataSet').serialize(),
+	 			success     : function(info) {
+	 				if (info.code == '200') {
+	 					alert(info.msg);
+	 					location.href = location.href;
+	 				} else {
+	 					alert(info.msg);
+	 				}
+	 			}
+ 			});
+
+ 			return false;
+		}
+	</script>
+
+	<div class="clear"></div>
+</block>

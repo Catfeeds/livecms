@@ -1,0 +1,152 @@
+
+/*产品介绍 start*/
+.introductionbox{
+	margin: 0 auto;
+}
+.mainTitle{
+	font-size: 34px;
+	text-align: center;
+	font-weight: normal;
+	margin-top: 60px;
+}
+.subTitle{
+	font-size: 16px;
+	font-weight: normal;
+	text-align: center;
+	color: #666;
+	margin-top: 30px;
+}
+.introductionbox ul{
+	width: 100%;
+	margin-top: 90px;
+	height: 550px;
+}
+.introductionbox ul li{
+	width: 480px;
+	height: 180px;
+}
+.introductionbox ul li i{
+	width: 85px;
+	height: 180px;
+	float: left;
+	display: block;
+}
+.i1{
+	background: url('../images/li1.png') no-repeat;
+}
+.i2{
+	background: url('../images/li2.png') no-repeat;
+}
+.i3{
+	background: url('../images/li3.png') no-repeat;
+}
+.i4{
+	background: url('../images/li4.png') no-repeat;
+}
+.i5{
+	background: url('../images/li5.png') no-repeat;
+}
+.i6{
+	background: url('../images/li6.png') no-repeat;
+}
+.introductionbox ul li p{
+	width: 395px;
+	float: right;
+
+}
+.introductionbox ul li p b{
+	display: block;
+    width: 100%;
+    font-size: 16px;
+    color: #333333;
+    height: 25px;
+}
+.introductionbox ul li p span{
+	display: block;
+    width: 100%;
+    font-size: 14px;
+    color: #666;
+}
+/*产品介绍 end*/
+
+/*客户案例 start*/
+.client{
+	background: #F1F4F8;
+}
+.clientbox{
+	margin: 0 auto;
+}
+.clientbox h2{
+	margin-top: 0;
+}
+.col3{
+	width: 280px;
+	height: 214px;
+	float: left;
+	display: inline;
+	margin-left: 20px;
+}
+.col3 img{
+	display: block;
+	margin: 0 auto;
+	width: 200px;
+	height: 139px;
+	border: 1px solid #ccc;
+}
+.col3 p{
+	text-align: center;
+	margin-top: 20px;
+	font-size: 14px;
+}
+.more{
+	display: block;
+	width: 140px;
+	height: 35px;
+	line-height: 35px;
+	text-align: center;
+	margin: 0 auto;
+	color: #fff;
+    background-color: #0092bf;
+    border-color: #0092bf;
+    font-size: 18px;
+    border-radius: 3px;
+}
+.more:hover{
+	text-decoration: none;
+	background: #0AB1FC;
+	border-color: #0AB1FC;
+}
+/*客户案例 end*/
+
+/*最新动态 start*/
+.newsbox{
+	margin: 0 auto;
+}
+.newsbox h2{
+	margin-top: 0;
+}
+.newsbox ul{
+	margin-top: 30px;
+}
+.newsbox ul li{
+	height: 45px;
+	padding:0 200px;
+}
+.date{
+	float:right;
+	color: #aaa;
+}
+.newsbox ul a{
+	color: #333;
+	font-size: 14px;
+}
+.newsbox ul a:hover{
+	text-decoration: none;
+	color: #008bff;
+}
+
+/*最新动态 end*/
+
+.footerbox{
+	margin-top: 30px;
+}

@@ -1,0 +1,29 @@
+<extend name="Common:common" />
+<block name="cssjs"></block>
+<block name="body">
+<body>
+	<!--面包屑导航 开始-->
+    <div class="crumb_warp">
+        <a href="__MODULE__/Index/info">首页</a> &raquo; <a href="__URL__/index">更新缓存</a>
+    </div>
+    <!--面包屑导航 结束-->
+
+    <!--结果页快捷搜索框 开始-->
+    <div class="search_wrap">
+        <form action="__URL__/index" method="get">
+            <table class="search_tab">
+                <tr>
+                    <th></th>
+                    <td><a href="javascript:;" onclick="update();" class="linkblue">更新缓存</a></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <!--结果页快捷搜索框 结束-->
+	<script>
+        function update() {
+            dialog.confirm('确定要更新缓存吗?', "__URL__/update", "__MODULE__/Index/info", '');
+        }
+    </script>
+</body>
+</block>

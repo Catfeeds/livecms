@@ -1,0 +1,82 @@
+<extend name="Common:common" />
+<block name="cssjs"></block>
+<block name="body">
+<body>
+    <!--面包屑导航 开始-->
+    <div class="crumb_warp">
+        <a href="__MODULE__/Index/info">首页</a> &raquo; <a href="__URL__/index">角色管理</a> &raquo; 分配权限 
+    </div>
+    <!--面包屑导航 结束-->
+
+    <!--结果集标题与导航组件 开始-->
+    <div class="result_wrap">
+        <div class="result_title">
+            角色 : {$role_info['role_name']}
+        </div>
+    </div>
+    <!--结果集标题与导航组件 结束-->
+
+    <div class="result_wrap">
+        <form method="post" id="dataSet" onsubmit="return present();">
+            <input type="hidden" name="role_id" value="{$role_info['role_id']}" id="role_id">
+            <table class="add_tab">
+                <tbody>
+                    <tr>
+                        <td>
+                            <foreach name="list" item="v">
+                                <p>
+                                <input type="checkbox" name="role_auth_ids[]" value="{$v['auth_id']}" <?php if(in_array($v['auth_id'],$role_auth_ids)){echo 'checked';} ?>>{$v['auth_name']}
+                                </p>
+                            </foreach>
+                        </td>
+                    </tr>
+                <tr>
+                    <td>
+                        <input type="submit" value="提交" class="btn-blue">
+                        <input type="button" class="back btn-blue" onclick="history.go(-1)" value="返回">
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+</body>
+<script type="text/javascript">
+    //全选 全不选功能
+    // $(function(){
+    //     $('.add_tab').find('tr').find('th').find('[type=checkbox]').click(function(){
+    //         $(this).parent('th').next('td').find('[type=checkbox]').prop('checked',$(this).prop('checked'));
+    //     });
+    // })
+
+    //数据提交
+    function present() {
+        var id = '';
+        var ids = $('.add_tab').find('tr').find('input:checked');
+        var num = ids.length;
+        for(var i = 0; i < num; i++) {
+            id += ids[i].value + ',';
+        }
+        id = id.substring(0, id.length-1);
+
+        var role_id = $('#role_id').val();
+        
+        //请求
+        $.ajax({
+            type:'POST',
+            url:'__URL__/authEdit',
+            data:{'role_auth_ids':id, 'role_id':role_id},
+            success     : function(info) {
+                console.log(info);
+                if(info.code == '201') {
+                    dialog.error(info.msg);
+                } else {
+                    dialog.success(info.msg, '__URL__/index');
+                }
+            }
+        });
+        
+        return false;
+    }
+</script>
+</block>

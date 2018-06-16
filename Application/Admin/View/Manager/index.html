@@ -1,0 +1,78 @@
+<extend name="Common:common" />
+<block name="cssjs"></block>
+<block name="body">
+<body>
+    <!--面包屑导航 开始-->
+    <div class="crumb_warp">
+        <a href="__MODULE__/Index/info">首页</a> &raquo; <a href="__URL__/index">管理员管理</a>
+    </div>
+    <!--面包屑导航 结束-->
+
+    <!--搜索结果页面 列表 开始-->
+    <form action="#" method="post">
+        <div class="result_wrap">
+            <!--快捷导航 开始-->
+            <div class="result_content">
+                <div class="short_wrap">
+                    <a href="__URL__/add" class="linkblue">添加管理员</a>
+                    <a href="__URL__/index" class="linkblue">刷新</a>
+                </div>
+            </div>
+            <!--快捷导航 结束-->
+        </div>
+
+        <div class="result_wrap">
+            <div class="result_content">
+                <table class="list_tab">
+                    <tr>
+                        <th width="4%"><strong>ID</strong></th>
+                        <th width="40%"><strong>用户名</strong></th>
+                        <th width="40%"><strong>角色</strong></th>
+                        <th><strong>操作</strong></th>
+                    </tr>
+                    <foreach name="list" item="v">
+                        <tr>
+                            <td>{$v['admin_id']}</td>
+                            <td>
+                                {$v['admin_name']}
+                            </td>
+                            <td>
+                                <if condition="$v['admin_name'] neq 'admin'">
+                                    {$v['role_name']}
+                                <else />
+                                    超级管理员
+                                </if>
+                            </td>
+                            <td>
+                                <if condition="$v['admin_name'] neq 'admin'">
+                                    <a href="__URL__/edit/admin_id/{$v['admin_id']}">编辑</a> <a>|</a>
+                                    <a href="javascript:;" onclick="del({$v['admin_id']});">删除</a>
+                                <else />
+                                    <a href="javascript:;" style="color:gray;" onclick="admin();">编辑</a> <a style="color:gray;">|</a>
+                                    <a href="javascript:;" style="color:gray;" onclick="admin();">删除</a>
+                                </if>
+                            </td>
+                        </tr>
+                    </foreach>
+                    
+                </table>
+
+            </div>
+        </div>
+    </form>
+    <!--搜索结果页面 列表 结束-->
+
+</body>
+<script>
+    //删除
+    function del(id) {
+        dialog.confirm('确定删除吗?', '__URL__/del', '__URL__/index', id);
+    }
+
+    //超级管理员不允许删除和编辑
+    function admin() {
+        dialog.error('超级管理员不允许编辑和删除!');
+    }
+
+</script>
+</block>

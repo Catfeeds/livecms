@@ -1,0 +1,99 @@
+<extend name="Common:common" />
+<block name="cssjs"></block>
+<block name="body">
+<body>
+    <!--面包屑导航 开始-->
+    <div class="crumb_warp">
+        <a href="__MODULE__/Index/info">首页</a> &raquo; <a href="__URL__/index">招聘管理</a> &raquo; 添加职位&nbsp;&nbsp;<a href="__URL__/add"><i class="fa fa-refresh"></i></a>
+    </div>
+    <!--面包屑导航 结束-->
+
+    <div class="result_wrap">
+        <form method="post" id="dataSet" onsubmit="return present();">
+            <table class="add_tab">
+                <tbody>
+                <tr>
+                    <th width="120">职位名称：</th>
+                    <td>
+                        <input type="text" name="job_name" id="job_name" required><span>必填</span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>工作地点：</th>
+                    <td>
+                        <input type="text" name="job_where" required><span>必填</span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>招聘人数：</th>
+                    <td>
+                        <input type="text" name="job_num" required><span>必填</span>
+                    </td>
+                </tr>
+
+                <!-- ueditor -->
+                <script type="text/javascript" charset="utf-8" src="__PUBLIC__/js/ueditor/ueditor.config.js"></script>
+                <script type="text/javascript" charset="utf-8" src="__PUBLIC__/js/ueditor/ueditor.all.min.js"></script>
+                <style>
+                    .edui-default{line-height: 28px;}
+                    div.edui-combox-body,div.edui-button-body,div.edui-splitbutton-body
+                    {overflow: hidden; height:20px;}
+                    div.edui-box{overflow: hidden; height:22px;}
+                </style>
+                <!-- ueditor -->
+
+                <tr>
+                    <th>职位描述：</th>
+                    <td>
+                        <script id="job_desc" name="job_desc" type="text/plain" style="width:460px;height:300px;"></script><span>必填</span>
+                        <script type="text/javascript">
+                            var ue = UE.getEditor('job_desc', {
+                                toolbars: [
+                                    ['fullscreen', 'undo', 'redo',]
+                                ],
+                                pasteplain: true,
+                            });
+                        </script>
+                    </td>
+                </tr>
+                <tr>
+                    <th>职位要求：</th>
+                    <td>
+                        <script id="job_ask" name="job_ask" type="text/plain" style="width:460px;height:300px;"></script><span>必填</span>
+                        <script type="text/javascript">
+                            var ue = UE.getEditor('job_ask', {
+                                toolbars: [
+                                    ['fullscreen', 'undo', 'redo',]
+                                ],
+                                pasteplain: true,
+                            });
+                        </script>
+                    </td>
+                </tr>
+                <tr>
+                    <th>排序：</th>
+                    <td>
+                        <input type="text" name="job_sort" required value="10"><span>数值越小, 排序越靠前, 默认值为10</span>
+                    </td>
+                </tr>
+                <tr>
+                    <th></th>
+                    <td>
+                        <input type="submit" value="提交" class="btn-blue">
+                        <input type="button" class="back btn-blue" onclick="history.go(-1)" value="返回">
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+</body>
+<script type="text/javascript">
+    //数据提交
+    function present() {
+        dialog.presentForm("__URL__/addData", "__URL__/index");
+
+        return false;
+    }
+</script>
+</block>

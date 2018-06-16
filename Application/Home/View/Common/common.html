@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<block name="keywords"></block>
+	<block name="description"></block>
+	<block name="title"></block>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=1200px;" />
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/font/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/common.css">
+	<block name="css"></block>
+	<script type="text/javascript" src="__PUBLIC__/js/jquery.js"></script>
+	<block name="js"></block>
+</head>
+<body>
+	<!-- 顶部导航 start -->
+	<div class="top w">
+		<div class="topbox mainWidth">
+			<a name="toTop"></a>
+			<a href="__ROOT__/index.html"><img src="__PUBLIC__/images/logo.png" class="fl" alt="logo"></a>
+			<div class="nav fr mr15">
+				<ul class="navlist">
+					<foreach name="navA" item="v">
+					<li class="list">
+						<a href="__ROOT__/{$v['nav_link']}">
+							{$v['nav_name']}
+							<if condition="$v['isA'] eq 1">
+								<i class="fa fa-caret-down"></i>
+							</if>
+						</a>
+						<if condition="$v['isA'] eq 1">
+							<ul>
+								<foreach name="navB" item="vv">
+									<if condition="$vv['nav_pid'] eq $v['nav_id']">
+										<li><a href="__ROOT__/{$vv['nav_link']}">{$vv['nav_name']}</a></li>
+									</if>
+								</foreach>
+							</ul>
+						</if>
+					</li>
+					</foreach>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!-- 顶部导航 end -->
+
+	<block name="body"></block>
+
+	<!-- 底部 start -->
+	<div class="footer w">
+		<div class="footerbox mainWidth">
+			<div class="columns fl ml15">
+				<h3>
+					关于Live
+				</h3>
+				<ul>
+					<li><a href="us.html">公司简介</a></li>
+					<li><a href="contact.html">联系我们</a></li>
+					<li><a href="job.html">人才招聘</a></li>
+					<li><a href="msg.html">在线留言</a></li>
+				</ul>
+			</div>
+			<div class="columns fl">
+				<h3>
+					产品
+				</h3>
+				<ul>
+					<li><a href="">用户行为分析</a></li>
+					<li><a href="">广告营销优化</a></li>
+					<li><a href="">电商数据分析</a></li>
+					<li><a href="">APP数据分析</a></li>
+				</ul>
+			</div>
+			<div class="columns fl">
+				<h3>
+					解决方案
+				</h3>
+				<ul>
+					<li><a href="">电商网站分析</a></li>
+					<li><a href="">银行&金融行业</a></li>
+					<li><a href="">互联网&政府&媒体</a></li>
+				</ul>
+			</div>
+			<div class="columns fl">
+				<h3>
+					应用情景
+				</h3>
+				<ul>
+					<li><a href="">用户行为情景</a></li>
+					<li><a href="">网站内容情景</a></li>
+					<li><a href="">目标转化情景</a></li>
+					<li><a href="">流量来源情景</a></li>
+					<li><a href="">电商交易情景</a></li>
+					<li><a href="">APP使用情景</a></li>
+					<li><a href="">自定义与综合报表情景</a></li>
+				</ul>
+			</div>
+			<div class="columns fr mr15">
+				<h3>
+					联系我们
+				</h3>
+				<ul>
+					<li><span>{$config['config_firm_name']}</span></li>
+					<li><span>地址：{$config['config_firm_location']}</span></li>
+					<li><span>电话：{$config['config_firm_phone']}</span></li>
+					<li><span>传真：{$config['config_firm_fax']}</span></li>
+					<li><span>邮箱：{$config['config_firm_mail']}</span></li>
+					<li><span>关注我们</span><img src="__PUBLIC__/images/erweima.png"></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!-- 底部 end -->
+
+	<!-- 备案 start -->
+	<div class="record w">
+		<div class="recordbox mainWidth">
+			<div class="links">
+				<span>友情链接：</span>
+				<foreach name="link" item="v">
+					<a href="{$v['link_href']}" target="{$v['link_type']}">{$v['link_name']}</a>
+				</foreach>
+			</div>
+			<p>{$config['config_web_copyright']} {$config['config_web_record']}</p>
+		</div>
+	</div>
+	<!-- 备案 end -->
+
+	<!-- 右侧客服 start -->
+	<div class="custom">
+		<div class="sidebox side1">
+			<img src="__PUBLIC__/images/side_icon01.png">
+			<div class="phone">
+				<p><span class="phonetitle">服务热线</span><span class="phonenumber">{$config['config_service_phone']}<span></p>
+			</div>
+		</div>
+		<div class="sidebox">
+			<a href="http://wpa.qq.com/msgrd?v=3&uin={$config['config_service_qq']}&site=qq&menu=yes" target="_blank"><img src="__PUBLIC__/images/side_icon02.png"></a>
+		</div>
+		<div class="sidebox">
+			<a href="#toTop"><img src="__PUBLIC__/images/side_icon03.png"></a>
+		</div>
+	</div>
+	<!-- 右侧客服 end -->
+	<script type="text/javascript" src="__PUBLIC__/js/index.js"></script>
+</body>
+</html>

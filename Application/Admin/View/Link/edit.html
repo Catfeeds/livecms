@@ -1,0 +1,62 @@
+<extend name="Common:common" />
+<block name="cssjs"></block>
+<block name="body">
+<body>
+    <!--面包屑导航 开始-->
+    <div class="crumb_warp">
+        <a href="__MODULE__/Index/info">首页</a> &raquo; <a href="__URL__/index">友情链接</a> &raquo; 编辑
+    </div>
+    <!--面包屑导航 结束-->
+
+    <div class="result_wrap">
+        <form method="post" id="dataSet" onsubmit="return present();">
+            <input type="hidden" name="link_id" value="{$info['link_id']}">
+            <table class="add_tab">
+                <tbody>
+                <tr> 
+                    <th  width="120">链接名称：</th>
+                    <td>
+                        <input type="text" name="link_name" style="width:240px;" value="{$info['link_name']}" required><span>必填</span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>链接地址：</th>
+                    <td>
+                        <input type="text" name="link_href" style="width:240px;" value="{$info['link_href']}" required><span>必填</span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>打开方式：</th>
+                    <td>
+                        <select name="link_type" style="width:250px;">
+                            <option value="0">新标签页打开</option>
+                            <option value="1" <?php if($info['link_type'] == 1){echo 'selected';} ?>>本窗口打开</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th>排序：</th>
+                    <td>
+                        <input type="text" name="link_sort" class="sm" value="{$info['link_sort']}"><span>数值越小, 排序越靠前, 默认值为10</span>
+                    </td>
+                </tr>
+                <tr>
+                    <th></th>
+                    <td>
+                        <input type="submit" value="提交" class="btn-blue">
+                        <input type="button" class="back btn-blue" onclick="history.go(-1)" value="返回">
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+</body>
+<script type="text/javascript">
+    //数据提交
+    function present() {
+        dialog.presentForm("__URL__/editData", "__URL__/index");
+        return false;
+    }
+</script>
+</block>

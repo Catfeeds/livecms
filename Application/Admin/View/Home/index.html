@@ -1,0 +1,141 @@
+<extend name="HomeCommon:common" />
+<block name="keywords"><meta name="keywords" content="{$config['config_seo_keywords']}" /></block>
+<block name="description"><meta name="description" content="{$config['config_seo_desc']}" /></block>
+<block name="title"><title>{$config['config_web_name']}</title></block>
+<block name="css">
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/index.css">
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/swiper-3.4.2.min.css">
+</block>
+<block name="js">
+	<script type="text/javascript" src="__PUBLIC__/js/swiper-3.4.2.jquery.min.js"></script>
+</block>
+<block name="body">
+	<!-- banner start -->
+	<div class="banner w">
+		<div class="swiper-container">
+		        <div class="swiper-wrapper">
+		        	<foreach name="banner" item="v">
+			            <div class="swiper-slide">
+			            	<a href="{$v['banner_href']}">
+			            		<img src="__ROOT__/{$v['banner_img']}">
+			            	</a>
+			            </div>
+		            </foreach>
+		        </div>
+		         <!-- 如果需要分页器 -->
+		    	<div class="swiper-pagination"></div>
+		    
+		    	<!-- 如果需要导航按钮 -->
+		    	<div class="swiper-button-prev"></div>
+		    	<div class="swiper-button-next"></div>
+		    </div>
+	</div>
+	<script type="text/javascript">
+	var swiper = new Swiper('.swiper-container', {
+        // 如果需要分页器
+    	pagination: '.swiper-pagination',
+    	paginationClickable: true,
+    
+    	// 如果需要前进后退按钮
+    	nextButton: '.swiper-button-next',
+    	prevButton: '.swiper-button-prev',
+
+    	//自动轮播
+    	autoplay : 3000,
+		speed    : 1000,
+		autoplayDisableOnInteraction : false,
+
+    });
+	</script>
+	<!-- banner end -->
+
+	<!-- 产品介绍 start -->
+	<div class="introduction w">
+		<div class="introductionbox mainWidth">
+			<h2 class="mainTitle">Live----网站权威管理系统</h2>
+			<h4 class="subTitle">稳固积累、持续创新、静思敏行，打造最简洁高效管理系统。</h4>
+			<ul>
+				<li class="fl">
+					<i class="i1"></i>
+					<p>
+						<b>完善的cms系统</b>
+						<span>涵盖CMS系统的所有功能及特性，IM即时聊天、动态分享、视频语音、图片分享、转发、点赞、收藏、微吧、频道、话题、活动、资讯、商城、积分、充值、提现、转账、标签认证、搜索找人等，同时具有良好的拓展性，便于快速上线运营和二次开发。</span>
+					</p>
+				</li>
+				<li class="fr">
+					<i class="i2"></i>
+					<p>
+						<b>多元化产品版本</b>
+						<span>TS系统是拥有PC版，系统版APP，微信手机版，WEB网页端等的全平台产品，并且针对不同垂直社交领域研发六大APP端子版本（聊天版、图片Show、圈子交友、媒体版、人脉版），满足各种全行业各种应用端需要。</span>
+					</p>
+				</li>
+				<li class="fl">
+					<i class="i3"></i>
+					<p>
+						<b>直播功能</b>
+						<span>将直播突破性加入社交系统，让互动更直接，类聚兴趣社交圈，解决直播行业偏低用户黏性的痛点。自主研发，只需集成，即刻分享，社交无界。</span>
+					</p>
+				</li>
+				<li class="fr">
+					<i class="i4"></i>
+					<p>
+						<b>强大的自定义门户</b>
+						<span>系统内置多个常用的功能模块，支持自由拖曳生成自定义页面，支持模块化管理。利用插件、应用、风格包等机制扩展功能，丰富站内功能，提升系统扩展性</span>
+					</p>
+				</li>
+				<li class="fl">
+					<i class="i5"></i>
+					<p>
+						<b>便捷的云端部署</b>
+						<span>支持云部署，极大地降低了企业建站门槛和维护成本，同时支持又拍云、阿里云等主流平台。</span>
+					</p>
+				</li>
+				<li class="fr">
+					<i class="i6"></i>
+					<p>
+						<b>自主研发即时聊天系统</b>
+						<span>强化聊天功能扩展，支持地理位置、名片、语音、视频、图片、多人群聊，形式多样，精彩不断</span>
+					</p>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<!-- 产品介绍 end -->
+
+	<!-- 客户案例 start -->
+	<div class="client w pb50">
+		<div class="clientbox mainWidth">
+			<h2 class="mainTitle pt50">客户案例</h2>
+			<h4 class="subTitle">Live累计500多客户建立至今，累计超过2000多个项目，客户遍及北京、上海、广州、深圳、杭州、厦门、台湾等地，涵盖CCTV7、电信等500强巨头企业</h4>
+			<div class="case-list mt50">
+				<foreach name="case" item="v">
+					<div class="col3">
+						<img src="__ROOT__/{$v['case_img']}">
+						<p>{$v['case_title']}</p>
+					</div>
+				</foreach>
+			</div>
+			<div class="clear"></div>
+			
+			<a href="client.html" class="more">查看更多</a>
+			
+		</div>
+	</div>
+	<!-- 客户案例 end -->
+
+	<!-- 最新动态 start -->
+	<div class="news w pb50">
+		<div class="newsbox mainWidth">
+			<h2 class="mainTitle pt50">最新动态</h2>
+			<h4 class="subTitle">Live累计500多客户建立至今，累计超过2000多个项目，客户遍及北京、上海、广州、深圳、杭州、厦门、台湾等地，涵盖CCTV7、电信等500强巨头企业</h4>
+			<ul>
+				<foreach name="article" item="v">
+					<li><a href="news/art-{$v['art_id']}.html">{$v['art_title']}</a> <span class="date"><?php echo date('Y-m-d', $v['art_time']); ?></span></li>
+				</foreach>
+			</ul>
+			<a href="index.php?v=news" class="more ">查看更多</a>
+		</div>
+	</div>
+	<!-- 最新动态 end -->
+
+</block>

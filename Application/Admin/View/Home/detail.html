@@ -1,0 +1,37 @@
+<extend name="HomeCommon:common" />
+<block name="title"><title>新闻详情 {$config['config_web_name']}</title></block>
+<block name="css">
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/aboutus.css">
+</block>
+<block name="js"></block>
+<block name="body">
+	<!-- 新闻详情 start -->
+	<div class="bigimg w">
+		<div class="bigimgbox">
+			<img src="__PUBLIC__/images/bigimg1.jpg">
+		</div>
+		<h2>新闻详情</h2>
+	</div>
+
+	<!-- 详情 start -->
+	<div class="news w">
+		<div class="newsbox">
+			<div class="newsitem">
+				<h2 class="fl"><span href="" class="newstitle newsdetail">{$info['art_title']}</span></h2>
+				<p class="time fr">
+					<span class="author">{$info['art_editor']}</span>
+					<span>|</span>
+					<span class="timedetail"><?php echo date('Y-m-d', $info['art_time']); ?></span>
+				</p>
+				<div class="clear"></div>
+				<div class="newsdetail">
+					{$info['art_content']}
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 详情 end -->
+
+	<div class="clear mb100"></div>
+
+</block>

@@ -1,0 +1,54 @@
+<extend name="Common:common" />
+<block name="cssjs"></block>
+<block name="body">
+<body>
+	<!--面包屑导航 开始-->
+	<div class="crumb_warp">
+		<a href="#">首页</a>
+	</div>
+	<!--面包屑导航 结束-->
+	
+    <div class="result_wrap">
+        <div class="result_title">
+            <h3>系统基本信息</h3>
+        </div>
+        <div class="result_content">
+            <ul>
+                <li>
+                    <label>操作系统</label><span>{$basicInfo['system']}</span>
+                </li>
+                <li>
+                    <label>运行环境</label><span>{$basicInfo['server']}</span>
+                </li>
+                <li>
+                    <label>版本</label><span>{$basicInfo['version']}</span>
+                </li>
+                <li>
+                    <label>上传附件限制</label><span>{$basicInfo['filesize']}</span>
+                </li>
+                <li>
+                    <label>北京时间</label><span>{$basicInfo['time']}</span>
+                </li>
+                <li>
+                    <label>服务器IP</label><span>{$basicInfo['ip']}</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+    <div class="result_wrap">
+        <div class="result_title">
+            <h3>使用帮助</h3>
+        </div>
+        <div class="result_content">
+            <ul>
+                <li>
+                    <label>开发人员QQ：</label><span><a href="http://wpa.qq.com/msgrd?v=3&uin=1822581649&site=qq&menu=yes" target="_blank">1822581649</a></span>
+                </li>
+            </ul>
+        </div>
+    </div>
+	<!--结果集列表组件 结束-->
+</body>
+</block>

@@ -1,0 +1,186 @@
+body{
+	font-family: 微软雅黑;
+}
+a{
+	color: #000;
+}
+/*主要内容区宽度*/
+.mainWidth{
+	width: 1200px;
+}
+
+/*手机端1200px*/
+.swiper-container{
+	width: 1200px;
+	margin: 0 auto;
+
+}
+.swiper-container img{
+	width: 1200px;
+	margin: 0 auto;
+}
+/*分辨率>1200则显示宽度为1200px*/
+@media screen and (min-width:1200px){
+	.swiper-container{
+		width: 100%;
+	}
+	.swiper-container img{
+		width: 100%;
+	}
+}
+/*顶部导航 start*/
+.top{
+	background: #111;
+	height: 65px;
+}
+.topbox{
+	background: #111;
+	height: 65px;
+	line-height: 65px;
+	margin: 0 auto;
+}
+.topbox img{
+	margin-top: 12px;
+}
+.nav{
+	font-size: 14px;
+}
+.list{
+	float: left;
+	margin-left: 40px;
+	position: relative;
+}
+.list ul{
+	background: rgba(17,17,17,.98);
+	position: absolute;
+	white-space: nowrap;
+	padding: 5px 20px;
+	display: none;
+	/*等级2以下会被swiper轮播插件覆盖*/
+	z-index: 2;	
+}
+.on ul{
+	display: block;
+}
+.on ul li{
+	line-height: 50px;	
+}
+.list a{
+	text-decoration: none;
+	color: #fff;
+}
+.list a:hover{
+	color: #008bff;
+	cursor: pointer;
+}
+
+/*顶部导航 end*/
+
+/*底部 start*/
+.footerbox{
+	padding-top: 30px;
+	margin: 0 auto;
+}
+.footer{
+	height:400px;
+	background: #333;
+}
+
+.columns{
+	width: 200px;
+	font-size: 14px;
+}
+.columns h3{
+	font-size: 16px;
+    color: #fff;
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+.columns li a{
+	font-size: 14px;
+    color: #ccc;
+    display: block;
+    color: #ccc;
+    line-height: 26px;
+}
+.columns li span{
+	font-size: 14px;
+    color: #ccc;
+    display: block;
+    line-height: 26px;
+    white-space: nowrap;
+}
+.columns li a:hover{
+	text-decoration: none;
+	color: #008bff;
+}
+/*底部 end*/
+
+/*备案 start*/
+.record{
+	background: #111;
+	height: 90px;
+}
+.recordbox{
+	margin: 0 auto;
+	padding-top: 20px;
+}
+.links span, .links a{
+	font-size: 14px;
+    color: #ccc;
+}
+.links a{
+	margin-left: 10px;
+	text-decoration: none;
+}
+.links a:hover{
+	color: #008bff;
+}
+.recordbox p{
+	color: #ccc;
+	margin-top: 10px;
+}
+/*备案 end*/
+
+/*右侧客服 start*/
+.custom{
+	width: 54px;
+    z-index: 2;
+    position: fixed;
+    right: 0;
+	opacity: 0.8;
+    background: rgb(0, 0, 0);
+    top: 30%;
+
+}
+.sidebox{
+	position: relative;
+	border-bottom: 1px solid #444;
+	cursor: pointer;
+} 
+.sideon{
+	background: #008bff;
+}
+.phone{
+	display: none;
+	position: absolute;
+	z-index: 2;
+	top: 0;
+	right:54px;
+	white-space: nowrap;
+	background: #fff;
+	border: 1px solid #ccc;
+	width: 200px;
+	text-align: center;
+	height: 54px;
+	line-height: 54px;
+}
+.phonetitle{
+	font-size: 16px;
+    color: #333;
+}
+.phonenumber{
+	margin-left: 10px;
+	color: #008bff;
+}
+/*右侧客服 end*/

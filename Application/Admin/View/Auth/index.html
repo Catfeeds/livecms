@@ -1,0 +1,106 @@
+<extend name="Common:common" />
+<block name="cssjs"></block>
+<block name="body">
+<body>
+    <!--面包屑导航 开始-->
+    <div class="crumb_warp">
+        <a href="__MODULE__/Index/info">首页</a> &raquo; <a href="__URL__/index">权限管理</a>
+    </div>
+    <!--面包屑导航 结束-->
+
+    <!--搜索结果页面 列表 开始-->
+    <form action="#" method="post">
+        <div class="result_wrap">
+            <!--快捷导航 开始-->
+            <div class="result_content">
+                <div class="short_wrap">
+                    <a href="__URL__/add" class="linkblue">添加权限</a>
+                    <a href="__URL__/index" class="linkblue">刷新</a>
+                </div>
+            </div>
+            <!--快捷导航 结束-->
+            <br>
+            <span style="color:gray;">注: 可以通过设置 <strong>显示/隐藏</strong> 来控制左侧菜单栏目是否 <strong>显示/隐藏</strong> 指定权限</span>
+        </div>
+
+        <div class="result_wrap">
+            <div class="result_content">
+                <table class="list_tab mylist">
+                    <tr>
+                        <th width="4%">ID</th>
+                        <th width="4%">排序</th>
+                        <th width="26%">权限名称</th>
+                        <th width="26%">控制器</th>
+                        <th width="26%">操作方法</th>
+                        <th>操作</th>
+                    </tr>
+                    <foreach name="list" item="v">
+                            <tr>
+                                <td>{$v['auth_id']}</td>
+                                <td>
+                                    <input type="text" name="auth_sort" value="{$v['auth_sort']}" onchange="sort(this, {$v['auth_id']})">
+                                </td>
+                                <td>
+                                   {$v['auth_name']}
+                                </td>
+                                <td>
+                                   {$v['auth_c']}
+                                </td>
+                                <td>
+                                   {$v['auth_a']}
+                                </td>
+                                <td>
+                                    <a href="__URL__/edit/auth_id/{$v['auth_id']}">编辑</a> <a>|</a>
+                                    <if condition="$v['auth_status'] eq 0">
+                                        <a href="javascript:;" onclick="status({$v['auth_id']}, 0);">已隐藏</a> <a>|</a>
+                                    <else />
+                                        <a href="javascript:;" onclick="status({$v['auth_id']}, 1);">已显示</a> <a>|</a>
+                                    </if>
+                                    <a href="javascript:;" onclick="del({$v['auth_id']});">删除</a>
+                                </td>
+                            </tr>
+                    </foreach>
+                    
+                </table>
+
+            </div>
+        </div>
+    </form>
+    <!--搜索结果页面 列表 结束-->
+
+</body>
+<script>
+    //删除
+    function del(id) {
+        dialog.confirm('确定删除吗?', '__URL__/del', '__URL__/index', id);
+    }
+
+    //更改排序
+    function sort(obj, auth_id) {
+        var auth_sort = $(obj).val();
+        $.ajax({
+            type        : 'POST',
+            url         : '__URL__/sort',
+            data        : {auth_sort : auth_sort, auth_id : auth_id},
+            success     : function(info) {
+                if(info.code == '201') {
+                    dialog.error(info.msg);
+                } else {
+                    dialog.success(info.msg, '__URL__/index');
+                }
+            }
+        });
+    }
+
+    //显示 or 隐藏
+    function status(auth_id, status) {
+        if(status == 0) {
+            var msg = '确定要显示吗?';
+        } else {
+            var msg = '确定要隐藏吗?';
+        }
+        dialog.confirm(msg, '__URL__/status', '__URL__/index', auth_id);
+    }
+
+</script>
+</block>

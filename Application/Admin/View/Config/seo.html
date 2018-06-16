@@ -1,0 +1,65 @@
+<extend name="Common:common" />
+<block name="cssjs"></block>
+<block name="body">
+<body>
+    <!--面包屑导航 开始-->
+    <div class="crumb_warp">
+        <a href="__MODULE__/Index/info">首页</a> &raquo; <a href="__URL__/index">网站配置</a>
+    </div>
+    <!--面包屑导航 结束-->
+
+    <div class="result_wrap">
+            <!--快捷导航 开始-->
+            <div class="result_content">
+                <div class="short_wrap">
+                    <a href="__URL__/index" class="linkblue">网站信息</a>
+                    <a href="__URL__/seo" class="linkblue linkdarkblue">SEO设置</a>
+                    <a href="__URL__/firm" class="linkblue">公司信息</a>
+                    <a href="__URL__/service" class="linkblue">客服设置</a>
+                </div>
+            </div>
+            <!--快捷导航 结束-->
+        </div>
+
+    <div class="result_wrap">
+        <form method="post" id="dataSet" onsubmit="return present();">
+            <table class="add_tab">
+                <tbody>
+                <tr>
+                    <th width="120">SEO标题：</th>
+                    <td>
+                        <input type="text" name="config_seo_title" class="lg" value="{$info['config_seo_title']}">
+                    </td>
+                </tr>
+                <tr>
+                    <th width="120">SEO关键字：</th>
+                    <td>
+                        <textarea name="config_seo_keywords">{$info['config_seo_keywords']}</textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <th width="120">SEO描述：</th>
+                    <td>
+                        <textarea name="config_seo_desc">{$info['config_seo_desc']}</textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <th></th>
+                    <td>
+                        <input type="submit" value="提交" class="btn-blue">
+                        <input type="button" class="back btn-blue" onclick="history.go(-1)" value="返回">
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+</body>
+<script type="text/javascript">
+    //数据提交
+    function present() {
+        dialog.presentForm("__URL__/editData", "__URL__/index");
+        return false;
+    }
+</script>
+</block>

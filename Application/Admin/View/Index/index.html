@@ -1,0 +1,59 @@
+<extend name="Common:common" />
+<block name="cssjs"></block>
+<block name="body">
+<body>
+	<!--头部 开始-->
+	<div class="top_box" style="color:#080808;">
+		<div class="top_left">
+			<div class="logo" style="color:#fff;" onclick="test();">Live后台管理</div>
+			<a href="/" class="myruntime myindex" title="网站首页" target="_blank"><i class="fa fa-home"></i></a>
+			<a href="__MODULE__/Runtime/index" class="myruntime" title="更新缓存" target="main"><i class="fa fa-trash-o"></i></a>
+		</div>
+		<div class="top_right">
+			<ul>
+				<li>管理员：{$admin_name}</li>
+				<li><a href="javascript:;" onclick="logout()" style="color:#fff;">退出</a></li>
+			</ul>
+		</div>
+	</div>
+	<!--头部 结束-->
+
+	<!--左侧导航 开始-->
+	<div class="menu_box">
+		<ul>
+			<foreach name="authA" item="v">
+            <li>
+            	<h3><i class="fa fa-fw fa-angle-down"></i>{$v['auth_name']}</h3>
+                <ul class="sub_menu">
+				<foreach name="authB" item="vv">
+					<if condition="$vv['auth_pid'] eq $v['auth_id']">
+                    	<li>
+                    		<a href="__MODULE__/{$vv['auth_c']}/{$vv['auth_a']}" target="main"><i style="color:#393D49;" class="fa fa-fw fa-angle-right"></i>{$vv['auth_name']}</a>
+                    	</li>
+                	</if>
+                </foreach>
+                </ul>
+            </li>
+           	</foreach>
+        </ul>
+	</div>
+	<!--左侧导航 结束-->
+
+	<!--主体部分 开始-->
+	<div class="main_box">
+		<iframe src="__URL__/info" frameborder="0" width="100%" height="100%" name="main"></iframe> 
+	</div>
+	<!--主体部分 结束-->
+
+	<!--底部 开始-->
+	<div class="bottom_box">
+		CopyRight © 2017. Powered By <a href="http://www.aizxc.com">http://www.aizxc.com</a>.
+	</div>
+	<!--底部 结束-->
+</body>
+<script type="text/javascript">
+	function logout() {
+		dialog.confirm('确定要退出吗?', "__MODULE__/Login/logout", "__MODULE__/Login/index", '');
+	}
+</script>
+</block>

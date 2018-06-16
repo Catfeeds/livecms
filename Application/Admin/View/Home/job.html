@@ -1,0 +1,57 @@
+<extend name="HomeCommon:common" />
+<block name="title"><title>人才招聘 {$config['config_web_name']}</title></block>
+<block name="css">
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/aboutus.css">
+</block>
+<block name="js"></block>
+<block name="body">
+	<!-- 关于我们 start -->
+	<div class="bigimg w">
+		<div class="bigimgbox">
+			<img src="__PUBLIC__/images/bigimg2.jpg">
+		</div>
+		<h2>人才招聘</h2>
+	</div>
+
+	<div class="contact w">
+		<div class="contactbox">
+			<div class="contactleft fl">
+				<ul>
+					<li><a href="us.html">公司简介</a></li>
+					<li><a href="contact.html">联系我们</a></li>
+					<li><a href="job.html" class="leftactive">人才招聘</a></li>
+					<li><a href="msg.html">在线留言</a></li>
+				</ul>
+			</div>
+			<div class="contactright fr">
+				<div class="contactrightbox">
+					<div class="contacttitle">
+						<h2>人才招聘</h2>
+						<foreach name="list" item="v">
+							<div class="position">
+								<h3>{$v['job_name']}({$v['job_num']}人)</h3>
+								<p class="mt15"><strong>工作地点：</strong><span class="where">{$v['job_where']}</span></p>
+								<p><strong>职位描述：</strong></p>
+								<div class="desc">
+									{$v['job_desc']}
+								</div>
+								<p><strong>职位要求：</strong></p>
+								<div class="desc">
+									{$v['job_ask']}
+								</div>
+							</div>
+							<p class="line"></p>
+						</foreach>
+
+						<p>简历投递邮箱: {$mail}（#替换成@），邮件标题请注明“应聘xxxx职位”。</p>
+						<p>收到简历后，我们将尽快安排面试，如若一个月内未联系您，您的简历将放入公司人才库。</p>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+	<!-- 关于我们 end -->
+
+	<div class="clear"></div>
+</block>

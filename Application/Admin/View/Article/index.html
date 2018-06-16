@@ -1,0 +1,132 @@
+<extend name="Common:common" />
+<block name="cssjs">
+    <!-- 日历控件 -->
+    <script type="text/javascript" src="__PUBLIC__/js/calendar.js"></script>
+</block>
+<block name="body">
+<body>
+    <!--面包屑导航 开始-->
+    <div class="crumb_warp">
+        <a href="__MODULE__/Index/info">首页</a> &raquo; <a href="__URL__/index">文章管理</a>
+    </div>
+    <!--面包屑导航 结束-->
+
+    <!--结果页快捷搜索框 开始-->
+    <div class="search_wrap">
+        <form action="__URL__/index" method="get">
+            <table class="search_tab">
+                <tr>
+                    <th></th>
+                    <td><a href="__URL__/add" class="linkblue">添加文章</a></td>
+                    <th></th>
+                    <td><a href="javascript:;" onclick="dels();" class="linkblue">批量删除</a></td>
+                    <th></th>
+                    <td><a href="__URL__/index" class="linkblue">刷新</a></td>
+                    <th width="60">开始日期:</th>
+                    <td>
+                        <input type="text" name="start" onclick="SelectDate(this, 'yyyy-MM-dd')" readonly="true" value="<?php if(isset($start)){echo $start;} ?>">
+                        <i class="fa fa-calendar-o"></i>
+                    </td>
+                    <th width="60">截止日期:</th>
+                    <td>
+                        <input type="text" name="end" onclick="SelectDate(this, 'yyyy-MM-dd')" readonly="true" value="<?php if(isset($end)){echo $end;} ?>">
+                        <i class="fa fa-calendar-o"></i>
+                    </td>
+                    <th width="60">关键字:</th>
+                    <td><input type="text" name="keywords" placeholder="关键字" value="<?php if(isset($keywords)){echo $keywords;} ?>"></td>
+                    <td><input type="submit" value="查询" class="btn-blue"></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <!--结果页快捷搜索框 结束-->
+
+    <div class="result_wrap">
+        <div class="result_content">
+            <table class="list_tab">
+                <tr>
+                    <th width="4%"><input type="checkbox" name=""></th>
+                    <th width="4%"><strong>排序</strong></th>
+                    <th width="4%"><strong>ID</strong></th>
+                    <th width="45%"><strong>标题</strong></th>
+                    <th width="15%"><strong>编辑</strong></th>
+                    <th width="15%"><strong>时间</strong></th>
+                    <th><strong>操作</strong></th>
+                </tr>
+                <foreach name="list" item="v">
+                    <tr>
+                        <td><input type="checkbox" name="art_id[]" value="{$v['art_id']}"></td>
+                        <td>
+                            <input type="text" name="art_sort" value="{$v['art_sort']}" onchange="sort(this, {$v['art_id']})">
+                        </td>
+                        <td>{$v['art_id']}</td>
+                        <td>
+                           {$v['art_title']}
+                        </td>
+                        <td>
+                           {$v['art_editor']}
+                        </td>
+                        <td><?php echo date('Y-m-d', $v['art_time']); ?></td>
+                        <td>
+                            <a href="__ROOT__/news/art-{$v['art_id']}.html" target="_blank">查看</a> <a>|</a>
+                            <a href="__URL__/edit/art_id/{$v['art_id']}">编辑</a> <a>|</a>
+                            <a href="javascript:;" onclick="del({$v['art_id']});">删除</a>
+                        </td>
+                    </tr>
+                </foreach>
+                
+            </table>
+
+            <!-- 分页开始 -->
+            <div class="page_list page">
+                {$page} 
+            </div>
+            <br><a style="text-decoration:none;">共{$count}条记录</a>
+            <!-- 分页结束 -->
+
+        </div>
+    </div>
+    <!--搜索结果页面 列表 结束-->
+
+</body>
+<script>
+    //删除
+    function del(id) {
+        dialog.confirm('确定删除吗?', '__URL__/del', '__URL__/index', id);
+    }
+
+    //批量删除
+    function dels() {
+        var id = '';
+        var ids = $('.list_tab').find('tr').find('td').find('input:checked');
+        var num = ids.length;
+        for(var i = 0; i < num; i++) {
+            id += ids[i].value + ',';
+        }
+        id = id.substring(0, id.length-1);
+        if(id == '') {
+            dialog.error('请至少选择一项!');
+        } else {
+            dialog.confirm('确定删除吗?', '__URL__/dels', '__URL__/index', id);
+        }
+    }
+
+    //更改排序
+    function sort(obj, art_id) {
+        var art_sort = $(obj).val();
+        $.ajax({
+            type        : 'POST',
+            url         : '__URL__/sort',
+            data        : {art_sort : art_sort, art_id : art_id},
+            success     : function(info) {
+                if(info.code == '201') {
+                    dialog.error(info.msg);
+                } else {
+                    dialog.success(info.msg, '__URL__/index');
+                }
+            }
+        });
+    }
+   
+</script>
+</block>

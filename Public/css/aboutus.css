@@ -1,0 +1,244 @@
+.bigimgbox{
+	width: 1200px;
+	height: 500px;
+	margin: 0 auto;
+}
+.bigimgbox img{
+	width: 1200px;
+	margin: 0 auto;
+}
+/*分辨率>1200则显示宽度100%*/
+@media screen and (min-width:1200px){
+	.bigimgbox{
+		width: 100%;
+	}
+	.bigimgbox img{
+		width: 100%;
+	}
+}
+.bigimg{
+	position: relative;
+}
+.bigimg h2{
+	position: absolute;
+	text-align: center;
+	width: 1200px;
+	color: #fff;
+	top: 100px;
+	font-size: 40px;
+	font-weight: normal;
+}
+.contactbox{
+	width: 1200px;
+	margin: 0 auto;
+	padding-top: 20px;
+}
+.contactleft{
+	margin-left: 15px;
+	width: 240px;
+	background: #fff;
+	background: #F1F4F8;
+}
+.contactleft li{
+	width: 240px;
+	height: 40px;
+	text-align: center;
+}
+.contactleft li a{
+	display: block;
+	height: 40px;
+	line-height: 40px;
+	color: #666;
+	font-size: 14px;
+}
+
+.contactleft li a:hover{
+	text-decoration: none;
+	color: #008bff;
+	background: rgb(245,245,245);
+}
+.contactleft li .leftactive{
+	background: #008bff;
+	color: #fff;
+}
+.contactleft li .leftactive:hover{
+	background: #008bff;
+	color: #fff;
+}
+.contactright{
+	width: 900px;
+	background: #fff;
+	margin-right: 15px;
+	border: 1px solid #ccc;
+	margin-bottom: 20px;
+	padding-bottom: 30px;
+}
+.contactrightbox{
+	width: 820px;
+	margin: 0 auto;
+}
+.contacttitle>h2{
+	height: 45px;
+    line-height: 45px;
+    font-size: 18px;
+    color: #333;
+    border-bottom: 1px solid #e8e8e8;
+    font-weight: normal;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.contacttitle>h4{
+	margin-top: 20px;
+	font-size: 16px;
+	font-weight: bold;
+	line-height: 26px;
+	color: #333;
+}
+.contacttitle p{
+	line-height: 26px;
+    font-size: 14px;
+    color: #333;
+}
+
+.position h3{
+	font-size: 20px;
+	font-weight: normal;
+}
+.position strong{
+	font-size: 14px;
+	color: gray;
+	margin-top:;
+}
+.position .where{
+	font-size: 14px;
+	color: gray;
+}
+.desc p{
+	line-height: 26px;
+	font-size: 14px;
+	color: gray;
+}
+.line{
+	margin-top: 30px;
+	border-bottom: 1px solid #ccc;
+	margin-bottom: 30px;
+}
+.clientinfo p{
+	color: gray;
+}
+.clientinfo input, .clientinfo textarea{
+	width: 300px;
+	height: 30px;
+	font-family: 微软雅黑;
+	font-size: 14px;
+	border: 1px solid #cacaca;
+	border-radius: 3px;
+}
+.clientinfo textarea{
+	width: 600px;
+	height: 150px;
+	display: block;
+}
+.clientinfo button{
+	font-family: 微软雅黑;
+	display: block;
+	width: 140px;
+	height: 35px;
+	line-height: 35px;
+	text-align: center;
+	color: #fff;
+    background-color: #0092bf;
+    font-size: 18px;
+    border-radius: 3px;
+    border:0px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+/*客户案例 start*/
+.examplesbox{
+	width: 1200px;
+	margin: 0 auto;
+}
+.col3{
+	width: 280px;
+	height: 214px;
+	float: left;
+	display: inline;
+	margin-left: 20px;
+}
+.col3 img{
+	display: block;
+	margin: 0 auto;
+	width: 200px;
+	height: 139px;
+	border: 1px solid #ccc;
+}
+.col3 p{
+	text-align: center;
+	margin-top: 20px;
+	font-size: 14px;
+}
+/*客户案例 end*/
+
+/*列表 start*/
+.newsitem{
+	margin-top: 30px;
+}
+.newsbox{
+	width: 1200px;
+	margin: 0 auto;
+}
+.newstitle{
+	font-size: 16px;
+	color: gray;
+}
+.newstitle{
+	font-weight: normal;
+	margin-left: 15px;
+}
+.newstitle:hover{
+	text-decoration: none;
+	color: #008bff;
+}
+.newssubtitle{
+	margin: 15px;
+	font-size: 14px;
+	line-height: 1.7;
+	color: #a6a6a6;
+}
+.time{
+	margin-right: 15px;
+	padding-top: 5px;
+	font-size: 14px;
+	color: #a6a6a6;
+}
+.page{
+	text-align: center;
+	padding-top: 50px;
+}
+.page a, .page span{
+	white-space: nowrap;
+	background-color: #428bca;
+	font-size:16px;
+	color: #fff;
+	display: inline-block;
+	margin-left: 3px;
+	padding:5px;
+}
+.page a:hover{
+	text-decoration: none;
+	background-color: #1B629F;
+}
+.page span{
+	background-color: #1B629F;
+	color: #fff;
+}
+/*列表 end*/
+
+/*详情 start*/
+.newsdetail{
+	color: #333;
+	margin: 15px;
+}
+/*详情 end*/
