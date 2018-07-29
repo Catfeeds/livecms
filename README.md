@@ -26,4 +26,4 @@
 	密码 123456
 ```
 ### 页面展示
-![后台](https://github.com/duiying/swooleNBA/blob/master/readmeimg/yuanli.png)
+![后台](https://github.com/duiying/livecms/blob/master/readmeimg/admin.png)
