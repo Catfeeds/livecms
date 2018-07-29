@@ -4,6 +4,7 @@
 * 页面静态化
 * crontab定时任务实现数据库备份
 * RBAC权限控制
+* 各种常用功能模块的CURD
 * 大量使用Ajax提升用户体验
 * Layer弹层的封装
 * Uploadify异步上传图片
