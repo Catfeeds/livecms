@@ -25,5 +25,8 @@
 	账号 ceshi  
 	密码 123456
 ```
-### 页面展示
+### 部分页面展示(点击查看大图)
 ![后台](https://raw.githubusercontent.com/duiying/livecms/master/readmeimg/admin.png)
+![前台](https://raw.githubusercontent.com/duiying/livecms/master/readmeimg/index.png)
+![前台](https://raw.githubusercontent.com/duiying/livecms/master/readmeimg/case.png)
+![前台](https://raw.githubusercontent.com/duiying/livecms/master/readmeimg/about.png)
