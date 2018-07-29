@@ -17,10 +17,13 @@ if(version_compare(PHP_VERSION,'5.3.0','<'))  die('require PHP > 5.3.0 !');
 // 开启调试模式 建议开发阶段开启 部署阶段注释或者设为false
 define('APP_DEBUG',True);
 
-//检测计划任务脚本参数
+// 检测计划任务脚本参数
+// $argv包含当运行于命令行下时传递给当前脚本的参数的数组
 if(!$argv || count($argv) < 4) {
     die("parmas_is_error");
 }
+
+// $dir是必须要加的,否则会出现文件目录找不到的问题
 $dir = dirname(__FILE__);
 
 $_GET['m'] = $argv[1];
