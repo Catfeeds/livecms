@@ -1,6 +1,6 @@
 Array
 (
-    [admin_name] => ceshi
+    [admin_name] => admin
     [admin_pass] => 123456
-    [verifyCode] => 35um
+    [verifyCode] => ctdk
 )

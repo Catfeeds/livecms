@@ -38,7 +38,7 @@ class MsgController extends Controller
 			$this->assign('msg_status', 1);	
 		}
 		
-		$res = D('Common')->datalist('Msg', $where, '*', 'msg_id asc');
+		$res = D('Common')->datalist('Msg', $where, '*', 'msg_id desc');
 
 		$this->assign('list', $res['list']);
 		$this->assign('page', $res['page']);
